@@ -1,14 +1,15 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import time
 
 def scrape():
-    options = Options()
-    options.add_argument('--headless')  # Run in headless mode
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless=new')  
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.get('https://www.github.com/vasantharan')  # Replace with your target URL
     time.sleep(2)  # Wait for page to load
     # Example: scraping all <h3> tags
