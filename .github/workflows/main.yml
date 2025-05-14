@@ -4,8 +4,8 @@ on:
     branches: [ main ]
 
 jobs:
+  scrapper-code:
     runs-on: ubuntu-latest
-    scrapper-code:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Setup Python
